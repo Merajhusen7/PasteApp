@@ -5,17 +5,17 @@ import { useState } from "react"; // Import useState
 import { removeFromPastes } from "../redux/pasteSlice";
 import { FormatDate } from "../utlis/formatDate";
 
-const Paste = () => {
-  const pastes = useSelector((state) => state.paste.pastes);
+const Task_Logger = () => {
+  const task_logger = useSelector((state) => state.task_logger.task_logger);
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState(""); // State to hold the search term
 
   const handleDelete = (id) => {
-    dispatch(removeFromPastes(id));
+    dispatch(removeFromTask_Logger(id));
   };
 
   // Filter pastes based on search term (by title or content)
-  const filteredPastes = pastes.filter((paste) =>
+  const filteredPastes = task_logger.filter((task_logger) =>
     paste.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -40,9 +40,9 @@ const Paste = () => {
           </h2>
           <div className="w-full px-4 pt-4 flex flex-col gap-y-5">
             {filteredPastes.length > 0 ? (
-              filteredPastes.map((paste) => (
+              filteredPastes.map((task_logger) => (
                 <div
-                  key={paste?._id}
+                  key={task_logger?._id}
                   className="border border-[rgba(128,121,121,0.3)] w-full gap-y-6 justify-between flex flex-col sm:flex-row p-4 rounded-[0.3rem]"
                 >
                   {/* heading and Description */}
@@ -60,7 +60,7 @@ const Paste = () => {
                         className="p-2 rounded-[0.2rem] bg-white border border-[#c7c7c7]  hover:bg-transparent group hover:border-blue-500"
                         // onClick={() => toast.error("Not working")}
                       >
-                        <a href={`/?pasteId=${paste?._id}`}>
+                        <a href={`/?taask_loggerId=${task_logger?._id}`}>
                           <PencilLine
                             className="text-black group-hover:text-blue-500"
                             size={20}
@@ -69,7 +69,7 @@ const Paste = () => {
                       </button>
                       <button
                         className="p-2 rounded-[0.2rem] bg-white border border-[#c7c7c7]  hover:bg-transparent group hover:border-pink-500"
-                        onClick={() => handleDelete(paste?._id)}
+                        onClick={() => handleDelete(task_logger?._id)}
                       >
                         <Trash2
                           className="text-black group-hover:text-pink-500"
@@ -78,7 +78,7 @@ const Paste = () => {
                       </button>
 
                       <button className="p-2 rounded-[0.2rem] bg-white border border-[#c7c7c7]  hover:bg-transparent group hover:border-orange-500">
-                        <a href={`/pastes/${paste?._id}`} target="_blank">
+                        <a href={`/task_logger/${task_logger?._id}`} target="_blank">
                           <Eye
                             className="text-black group-hover:text-orange-500"
                             size={20}
@@ -101,7 +101,7 @@ const Paste = () => {
 
                     <div className="gap-x-2 flex ">
                       <Calendar className="text-black" size={20} />
-                      {FormatDate(paste?.createdAt)}
+                      {FormatDate(task_llogger?.createdAt)}
                     </div>
                   </div>
                 </div>
@@ -118,4 +118,4 @@ const Paste = () => {
   );
 };
 
-export default Paste;
+export default Task_Logger;
