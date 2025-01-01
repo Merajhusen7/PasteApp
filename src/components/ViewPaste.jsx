@@ -3,24 +3,24 @@ import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-const ViewPaste = () => {
+const ViewTask_Logger = () => {
   const { id } = useParams();
 
   console.log(id)
 
-  const pastes = useSelector((state) => state.paste.pastes);
+  const task_logger= useSelector((state) => state.task_logger.task_logger);
 
   // Filter pastes based on search term (by title or content)
-  const paste = pastes.filter((paste) => paste._id === id)[0];
+  const task_logger= task_logger.filter((paste) => task_logger._id === id)[0];
 
-  console.log("Paste->",paste);
+  console.log("Task_Logger->",task_logger);
   return (
     <div className="w-full h-full py-10 max-w-[1200px] mx-auto px-5 lg:px-0">
       <div className="flex flex-col gap-y-5 items-start">
         <input
           type="text"
           placeholder="Title"
-          value={paste.title}
+          value={task_logger.title}
           disabled
           className="w-full text-black border border-input rounded-md p-2"
         />
@@ -58,7 +58,7 @@ const ViewPaste = () => {
 
           {/* TextArea */}
           <textarea
-            value={paste.content}
+            value={task_logger.content}
             disabled
             placeholder="Write Your Content Here...."
             className="w-full p-3  focus-visible:ring-0"
@@ -73,4 +73,4 @@ const ViewPaste = () => {
   );
 };
 
-export default ViewPaste;
+export default ViewTask_Logger;
