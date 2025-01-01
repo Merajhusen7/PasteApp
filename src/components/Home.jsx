@@ -9,25 +9,25 @@ const Home = () => {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [searchParams, setSearchParams] = useSearchParams(); // Destructure useSearchParams
-  const pasteId = searchParams.get("pasteId"); // Get pasteId from the search params
-  const pastes = useSelector((state) => state.paste.pastes);
+  const task_loggerId = searchParams.get("task_loggerId"); // Get task_loggerId from the search params
+  const task_logger = useSelector((state) => state.paste.task_logger);
   const dispatch = useDispatch();
 
-  const createPaste = () => {
-    const paste = {
+  const createTask_Logger = () => {
+    const task_logger = {
       title: title,
       content: value,
       _id:
-        pasteId ||
+        task_loggerId ||
         Date.now().toString(36) + Math.random().toString(36).substring(2),
       createdAt: new Date().toISOString(),
     };
 
-    if (pasteId) {
-      // If pasteId is present, update the paste
-      dispatch(updatePastes(paste));
+    if (task_loggerId) {
+      // If task-loggerId is present, update the paste
+      dispatch(updateTask_Logger(task_logger));
     } else {
-      dispatch(addToPastes(paste));
+      dispatch(addToTask_Logger(task_logger));
     }
 
     setTitle("");
@@ -37,7 +37,7 @@ const Home = () => {
     setSearchParams({});
   };
 
-  const resetPaste = () => {
+  const resetTask_Logger = () => {
     setTitle("");
     setValue("");
     setSearchParams({});
@@ -45,14 +45,14 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (pasteId) {
-      const paste = pastes.find((p) => p._id === pasteId);
-      if (paste) {
-        setTitle(paste.title);
-        setValue(paste.content);
+    if (Task_Logger) {
+      const task_logger = task_logger.find((p) => t._id === task_loggerId);
+      if (task_logger) {
+        setTitle(task_logger.title);
+        setValue(task_logger.content);
       }
     }
-  }, [pasteId, pastes]);
+  }, [task_loggerId, task_logger]);
 
 
   return (
@@ -66,19 +66,19 @@ const Home = () => {
             onChange={(e) => setTitle(e.target.value)}
             // Dynamic width based on whether pasteId is present
             className={`${
-              pasteId ? "w-[80%]" : "w-[85%]"
+              task_loggerId ? "w-[80%]" : "w-[85%]"
             } text-black border border-input rounded-md p-2`}
           />
           <button
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700"
             onClick={createPaste}
           >
-            {pasteId ? "Update Paste" : "Create My Paste"}
+            {task_loggerId ? "Update Task_logger" : "Create My Task Logger"}
           </button>
 
-        {pasteId &&  <button
+        {task_loggerId &&  <button
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700"
-            onClick={resetPaste}
+            onClick={resetTask_Logger}
           >
             <PlusCircle size={20} />
           </button>}
