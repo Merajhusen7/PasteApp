@@ -1,8 +1,8 @@
 import {configureStore} from "@reduxjs/toolkit"
-import pasteReducer from "./pasteSlice"
+import task_loggerReducer from "./task_loggerSlice"
 
 export const store = configureStore({
   reducer:{
-      paste: pasteReducer
+      task_logger: task_loggerReducer
   }
 })
