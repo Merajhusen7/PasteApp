@@ -4,7 +4,7 @@ export const NavbarData = [
     title:"Home",
   },
   {
-    path:"/pastes",
-    title:"Paste",
+    path:"/Task_Logger",
+    title:"Task Logger",
   },
 ]
