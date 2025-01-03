@@ -2,7 +2,7 @@ import { Copy, PlusCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { addToPastes, updatePastes } from "../redux/pasteSlice";
+import { addToTask_Logger, updateTask_Logger } from "../redux/task_loggerSlice";
 import { useSearchParams } from "react-router-dom";
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
   const [title, setTitle] = useState("");
   const [searchParams, setSearchParams] = useSearchParams(); // Destructure useSearchParams
   const task_loggerId = searchParams.get("task_loggerId"); // Get task_loggerId from the search params
-  const task_logger = useSelector((state) => state.paste.task_logger);
+  const task_logger = useSelector((state) => state.task_logger.task_logger);
   const dispatch = useDispatch();
 
   const createTask_Logger = () => {
