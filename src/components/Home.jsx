@@ -2,7 +2,7 @@ import { Copy, PlusCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { addToTask_Logger, updateTask_Logger } from "../redux/task_loggerSlice";
+import { addToTask_Logger, updateTask_Logger } from "../redux/pasteSlice";
 import { useSearchParams } from "react-router-dom";
 
 const Home = () => {
