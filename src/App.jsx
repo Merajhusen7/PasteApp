@@ -16,17 +16,17 @@ const router = createBrowserRouter(
       </div>
     },
     {
-      path:"/pastes",
+      path:"/task_logger",
       element: <div className="w-full h-full flex flex-col">
       <Navbar/>
-      <Paste/>
+      <Task_Logger/>
     </div>
     },
     {
-      path:"/pastes/:id",
+      path:"/task_logger/:id",
       element: <div className="w-full h-full flex flex-col">
       <Navbar/>
-      <ViewPaste/>
+      <ViewTask_Logger/>
     </div>,
     }
   ]
